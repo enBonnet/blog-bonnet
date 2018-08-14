@@ -1,0 +1,85 @@
+$variable-columns: false;
+@import "~bulma/bulma";
+
+@import url('//fonts.googleapis.com/css?family=Pacifico');
+@import url('//fonts.googleapis.com/css?family=Poppins');
+@import url('//fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url('//use.fontawesome.com/releases/v5.2.0/css/all.css');
+
+$logo: 'Pacifico', cursive;
+$postTitles: 'Libre Baskerville', serif;
+$description: 'Poppins', sans-serif;
+
+$yellowTitle: #ffce46;
+
+body {
+  background: #ffffff;
+}
+
+header {
+  .title {
+    font-family: $logo;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+.me {
+  margin-bottom: 50px;
+  .name {
+    font-family: $postTitles;
+    font-weight: 700;
+    font-size: 60px;
+    color: $yellowTitle;
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    .bio {
+      max-width: 800px;
+      font-size: 20px;
+      font-family: $description;
+    }
+    .rrss {
+      align-self: flex-end;
+      .link {
+        text-decoration: none;
+        color: inherit;
+        margin: 10px;
+        .icon {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+}
+
+.blog {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  a {
+    text-decoration: none;
+    color: inherit;
+    article {
+      margin-bottom: 2rem;
+      h1 {
+        font-size: 40px;
+        font-weight: 700;
+        font-family: $postTitles;
+      }
+      p {
+        font-size: 20px;
+        font-weight: 400;
+        font-family: $description;
+      }
+    }
+  }
+}
+
+.post {
+  //background: #ccc;
+  max-width: 800px;
+  margin: 30px auto 0px auto;
+}
