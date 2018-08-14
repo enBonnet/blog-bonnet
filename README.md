@@ -18,8 +18,3 @@ gatsby develop
 ```
 
 Enjoy!
-
-Deploy:
-```sh
-
-```
