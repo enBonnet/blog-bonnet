@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'enBonnet',
     name: 'Ender Bonnet',
-    bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.',
+    bio: 'Programador, pero primero fui hijo de un gastrónomo y una costurera que me enseñaron que nunca hay que darse por vencido ni dejar de aprender, en mis tiempos libres fotógrafo, ciclista, cocinero, pero siempre nerd. ',
     rrss: {
       twitter: 'https://twitter.com/enBonnet',
       linkedin: 'https://www.linkedin.com/in/ender-bonnet-b47b25144/',
