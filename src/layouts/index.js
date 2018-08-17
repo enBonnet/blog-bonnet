@@ -12,7 +12,7 @@ const Layout = ({ children, data }) => (
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
-        { name: 'description', content: 'Blog de Ender Bonnet, ver a leerme hablar de programación' },
+        { name: 'description', content: 'Blog de Ender Bonnet, ven a leerme hablar sobre programación' },
         { name: 'keywords', content: 'programming, javascript, nodejs, react, vue, programacion, gatsbyjs' },
       ]}
     />
