@@ -8,7 +8,7 @@ export default function Template({data}) {
   return (
     <div className="me container">
       <h1 className="name">{post.frontmatter.title}</h1>
-      <article className="post">
+      <article className="content post">
         <div dangerouslySetInnerHTML = {{__html: post.html}} />
       </article>
     </div>
