@@ -3,7 +3,7 @@ path: '/otro-post'
 title: 'Otro Blog Post'
 description: 'This is a description of this posts'
 date: 2018-03-04
-published: true
+published: false
 ---
 
 <p align="center">
