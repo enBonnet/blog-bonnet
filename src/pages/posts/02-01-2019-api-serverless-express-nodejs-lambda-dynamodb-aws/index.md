@@ -6,36 +6,34 @@ date: 2019-01-02
 published: false
 ---
 
-# Como construir una API Serverless en AWS con Lambda, DynamoDB y Express
-
-Una de las ultimas tecnologias que se ha introducido a nuestra cartera de posibilidades es Serverless, en mi opinión una de las mas convenientes, con un muy buen balance de costo y beneficio. Utilizando este framework puedes reducir mucho el tiempo de despligue de una aplicación y dedicarle más tiempo a la programación de funciones que aporten valor.
+Una de las ultimas tecnologías que se ha introducido a nuestra cartera de posibilidades es Serverless, en mi opinión una de las mas convenientes, con un muy buen balance de costo y beneficio. Utilizando este framework puedes reducir mucho el tiempo de despliegue de una aplicación y dedicarle más tiempo a la programación de funciones que aporten valor.
 
 En este articulo, espero mostrarte una pequeña introducción al framework de Serverless con un CRUD.
 
 ## ¿Que es Serverless?
 
-¿Serverless? Si mi aplicación no corre sobre un servidor entonces ¿Donde corre? Es lo primero que podemos preguntarnos, pero en realidad la palabra se refiere a que esta metología abstrae el proceso de configuración y mantenimiento de un servidor, sí adiós a configurar un servidor nginx para poder exponer tu aplicación.
+¿Serverless? Si mi aplicación no corre sobre un servidor entonces ¿Donde corre? Es lo primero que podemos preguntarnos, pero en realidad la palabra se refiere a que esta métodología abstrae el proceso de configuración y mantenimiento de un servidor, sí adiós a configurar un servidor nginx para poder exponer tu aplicación.
 
-También nos facilita la configuraciones de escaladas automaticas o balanceo de carga, por lo que nos deja mucho más tiempo disponible para dedicarnos al código.
+También nos facilita la configuraciones de escaladas automáticas o balanceo de carga, por lo que nos deja mucho más tiempo disponible para dedicarnos al código.
 
-Otran gran victoria, no menor, es el costo. Cuando ejecutas tu código en una maquina virtual o servidor local, este servicio tiene que tener alta disponibilidad, siempre estar disponible y consumiendo recursos, en cambió, serverless solo genera costos al momento de realizar una solicitud y la cantidad de tiempo que se ejcuta tu código. Esto implica una reducción de los costos significativa.
+Otra gran victoria, no menor, es el costo. Cuando ejecutas tu código en una maquina virtual o servidor local, este servicio tiene que tener alta disponibilidad, siempre estar disponible y consumiendo recursos, en cambió, serverless solo genera costos al momento de realizar una solicitud y la cantidad de tiempo que se ejecuta tu código. Esto implica una reducción de los costos significativa.
 
 #### Pros
 
-Los benficios son:
+Los beneficios son:
 
 - **Costo** - solo pagas por lo que usas.
 - **Sencillez** - evita la necesidad de configurar infraestructura
-- **Soportado en multiples lenguajes de programción**
+- **Soportado en múltiples lenguajes de programación**
 - **Utilizado por cualquier proveedor de cloud**
-- **Varias alternativas para utilizar tus funciones (Endpoint de una api, colsa de mensajes, cronjobs...)**
+- **Varias alternativas para utilizar tus funciones (Endpoint de una api, colas de mensajes, ejecuciones programadas...)**
 
 #### Cons
 
 Los contras que debes tener en cuenta:
 
 - **Manejar u Organizar el código puede ser complejo**
-- **El proceso de debug en local es un desafio**
+- **El proceso de debug en local es un desafió**
 - **La aplicación no tendrá acceso al sistema de archivos**
 - **Cambiar tu proveedor de cloud puede significar cambiar el código**
 - **Cold starts (segundos extra que demora en ejecutarse una función por primera vez)**
@@ -45,11 +43,11 @@ Puedes ver algunas otras limitaciones de AWS Lambda [aquí](https://docs.aws.ama
 
 Para manejar los archivos de la aplicación debes utilizar otro servicio de tu proveedor de cloud, en nuestro caso AWS, puedes ocupar un S3.
 
-En mi ultima implementación de esta metología pude comprobar que el _Cold Start_ para funciones escribas en JavaScript no llega a ser un problema, por otro lado si tu aplicación corre sobré JAVA la historia cambia, pero no queda todo allí como seguramente ya lo pensaste existén formas de matener las funciones "tibias" y esperando a que llegue una petición esta ténica se llama [Lambda Warm Start](https://blog.octo.com/en/cold-start-warm-start-with-aws-lambda/).
+En mi ultima implementación de esta métodología pude comprobar que el _Cold Start_ para funciones escribas en JavaScript no llega a ser un problema, por otro lado si tu aplicación corre sobré JAVA la historia cambia, pero no queda todo allí como seguramente ya lo pensaste existen formas de mantener las funciones "tibias" y esperando a que llegue una petición esta ténica se llama [Lambda Warm Start](https://blog.octo.com/en/cold-start-warm-start-with-aws-lambda/).
 
 ## Serverless el Framework
 
-Si, el Framework comparte su nombré con la metodología de desarrollo, este es una herramienta que nos permite desplegar una aplicación en Node.js fácilmente. Serverless es la navaja suiza Open Source en forma de CLI que nos facilita la integración con multiples proveedores de cloud.
+Si, el Framework comparte su nombré con la métodología de desarrollo, este es una herramienta que nos permite desplegar una aplicación en Node.js fácilmente. Serverless es la navaja suiza Open Source en forma de CLI que nos facilita la integración con múltiples proveedores de cloud.
 
 También cuenta con plugins que nos pueden facilitar la vía del desarrollo local, más adelante en este articulo utilizaras el plugin de _DynamoDB Local_.
 
@@ -57,13 +55,13 @@ Como si esto fuera poco también cuenta con una comunidad activa y buena documen
 
 ## Manos a la masa
 
-Algunos de los problemás que puedes tener durante el desarrollo de este articulo:
+Algunos de los problemas que puedes tener durante el desarrollo de este articulo:
 
 - Falta del JAVA JVM en tu computador.
 - La version del Serverless Framework o algún plugin.
 - Tener las credenciales de Amazon AWS correctamente configuradas. [_¿Como lo haces?_](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
 
-Habíendo dejado en claro eso podemos comenzar, instalando el CLI de Serverless:
+Habiendo dejado en claro eso podemos comenzar, instalando el CLI de Serverless:
 
 ```bash
 npm i -g serverless
@@ -131,9 +129,9 @@ resources:
         TableName: ${self:custom.tableName}
 ```
 
-Hay algunas cosas que resaltar en este archivo: el campo `service` será el nombre de nuestra aplicación, dentro de `custom` vamos a recibir un parametro que será el nombre de la tabla en DynamoDB, que luego se guarda en una variable llamada `TODOS_TABLE`. Luego podremos acceder al valor de esta variable por el `process.env` en el código.
+Hay algunas cosas que resaltar en este archivo: el campo `service` será el nombre de nuestra aplicación, dentro de `custom` vamos a recibir un parámetro que será el nombre de la tabla en DynamoDB, que luego se guarda en una variable llamada `TODOS_TABLE`. Luego podremos acceder al valor de esta variable por el `process.env` en el código.
 
-El resto de este archivo configura los permisos, campos, esquemás... con los que vamos a trabajar en DynamoDB ahora vamos a agregar algunos plugins que son necesarios para el desarrollo local o también llamado `offline`.
+El resto de este archivo configura los permisos, campos, esquemas... con los que vamos a trabajar en DynamoDB ahora vamos a agregar algunos plugins que son necesarios para el desarrollo local o también llamado `offline`.
 
 ```bash
 npm i --save serverless-dynamodb-local@0.2.30 serverless-offline
@@ -149,7 +147,7 @@ plugins:
 
 El orde es importante, primero debe de estar el `serverless-dynamodb-local` y luego el `serverless-offline`.
 
-Hasta aquí ya tenemos configurado todo el entorno que necesita nuesta aplicación para ejecutarse, ahora podemos comenzar a trabajar en el código.
+Hasta aquí ya tenemos configurado todo el entorno que necesita nuestra aplicación para ejecutarse, ahora podemos comenzar a trabajar en el código.
 
 Creas el archivo `index.js` y lo llenas con lo siguiente:
 
@@ -192,7 +190,7 @@ app.get('/todos', (req, res) => {
 module.exports.handler = serverless(app)
 ```
 
-Si has tenido experiencia con alguna otra aplicación contruida con `Express` el contenido de este archivo te será bastante familiar, así le estamos dando a nuestra aplicación un unico endpoint para leer todas las notas guardados.
+Si has tenido experiencia con alguna otra aplicación construida con `Express` el contenido de este archivo te será bastante familiar, así le estamos dando a nuestra aplicación un unico endpoint para leer todas las notas guardados.
 
 Ahora a ejecutar nuestra api:
 
@@ -200,7 +198,7 @@ Ahora a ejecutar nuestra api:
 sls offline start --migrate
 ```
 
-Luego de que termine de iniciar la aplicacion podrás acceder a la ruta http://localhost:3000/todos y deberías de tener como respuesta un objeto con un array de "notas" vació: `{"todos":[]}`.
+Luego de que termine de iniciar la aplicación podrás acceder a la ruta http://localhost:3000/todos y deberías de tener como respuesta un objeto con un array de "notas" vació: `{"todos":[]}`.
 
 Para agregar algunos notas necesitamos agregar un endpoint que lo permita, agrega este bloque de código a tu archivo `index.js` justo encima del `module.exports`:
 
@@ -242,9 +240,9 @@ Esto debe de devolvernos el objeto creado en la base de datos, por ejemplo:
 {"todoId":"5c30e169-26e3-44de-9564-d23a403ddf1b","title":"Finish bug tickets","done":false}
 ```
 
-Si la respuesta es como esta y no tienes ningún error, acabas de crear una nota en tu aplicación, si vás al endpoint podras ver las notas creadas http://localhost:3000/todos.
+Si la respuesta es como esta y no tienes ningún error, acabas de crear una nota en tu aplicación, si vas al endpoint podrás ver las notas creadas http://localhost:3000/todos.
 
-Continuando con las recomiendaciones que nos da metología REST para construir una API se agregara un endpoint que nos termina ver solo una nota especificada por el ID.
+Continuando con las recomendaciones que nos da métodologia REST para construir una API se agregara un endpoint que nos termina ver solo una nota especificada por el ID.
 
 ```javascript
 app.get('/todos/:todoId', (req, res) => {
@@ -272,13 +270,13 @@ app.get('/todos/:todoId', (req, res) => {
 })
 ```
 
-Una ves agregado este endpoint puedes probarlo con el id de alguna nota creado con anterioidad (http://localhost:3000/todos/5c30e169-26e3-44de-9564-d23a403ddf1b), la respuesta debe de ser solo la nota a la que corresponde el ID
+Una ves agregado este endpoint puedes probarlo con el id de alguna nota creado con anterioridad (http://localhost:3000/todos/5c30e169-26e3-44de-9564-d23a403ddf1b), la respuesta debe de ser solo la nota a la que corresponde el ID
 
 ```bash
 {"todoId":"5c30e169-26e3-44de-9564-d23a403ddf1b","title":"Finish bug tickets","done":false}
 ```
 
-Agregamos el metodo `PUT` de nuestra API:
+Agregamos el método `PUT` de nuestra API:
 
 ```javascript
 app.put('/todos', (req, res) => {
@@ -309,7 +307,7 @@ Lo puedes probar cambiando el campo `done` de una nota de `false` a `true` para 
 curl -H "Content-Type: application/json" -X PUT http://localhost:3000/todos -d '{"todoId": "5c30e169-26e3-44de-9564-d23a403ddf1b", "title": "Finish bug tickets", "done": done}'
 ```
 
-Y por ultimo el metodo `DELETE` para nuestra api de notas
+Y por ultimo el método `DELETE` para nuestra api de notas
 
 ```javascript
 app.delete('/todos/:todoId', (req, res) => {
@@ -339,11 +337,11 @@ Para probarlo
 curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/todos/5c30e169-26e3-44de-9564-d23a403ddf1b
 ```
 
-Debe de eliminar la nota a la cual corresponde el ID selecionado.
+Debe de eliminar la nota a la cual corresponde el ID seleccionado.
 
-Con esto tendremos la API REST lista y funcionando en local, ahora es donde el Framework Serverless hace su magía.
+Con esto tendremos la API REST lista y funcionando en local, ahora es donde el Framework Serverless hace su magia.
 
-Solo ejecuta `sls deploy` se tomará unos minutos y al final tendrás desplegada tu API en AWS y en caso de que todo sea un exito podras ver un mensaje como el siguiente:
+Solo ejecuta `sls deploy` se tomará unos minutos y al final tendrás desplegada tu API en AWS y en caso de que todo sea un éxito podrás ver un mensaje como el siguiente:
 
 ```bash
 Serverless: WARNING: Missing "tenant" and "app" properties in serverless.yml. Without these properties, you can not publish the service to the Serverless Platform.
@@ -381,10 +379,10 @@ Ahora puedes probar los mismos comandos `CURD` con este nuevo endpoint que gener
 
 ### Extras
 
-- Puedes usar este comento para ver algunos logs `serverless logs -f todo-app -t`
-- Para borrar todos los servicios que levanto esta aplicación al desplegarse en AWS puedes usar el comando `serverless remove`. _No solicita confirmación_.
+- Puedes usar este comando para ver algunos logs `serverless logs -f todo-app -t`
+- Para borrar todos los servicios que levanto esta aplicación al desplegarse en AWS `serverless remove`. _No solicita confirmación_.
 
-Pueden ver el código relacionado a este arcticulo como guía en GitHub.
+Pueden ver el código relacionado a este arcticulo como guía en [GitHub](https://github.com/enBonnet/api-express-serverless).
 
 ### Creditos
 
