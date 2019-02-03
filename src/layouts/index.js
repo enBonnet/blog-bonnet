@@ -7,10 +7,12 @@ import Footer from '../components/footer'
 //import bulma on scss
 import './style.scss'
 
-const isIndex = path => {
-  path = path.split('/')
-  if (path[3] !== '') {
-    return true
+const isIndex = () => {
+  if (window) {
+    let path = window.location.href.split('/')
+    if (path[3] !== '') {
+      return true
+    }
   }
 }
 
@@ -33,11 +35,7 @@ const Layout = ({ children, data }) => (
     />
     <Header siteTitle={data.site.siteMetadata.title} />
     {children()}
-    {isIndex(window.location.href) ? (
-      <Footer rrss={data.site.siteMetadata.rrss} />
-    ) : (
-      ''
-    )}
+    {isIndex() ? <Footer rrss={data.site.siteMetadata.rrss} /> : ''}
   </div>
 )
 
