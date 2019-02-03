@@ -1,5 +1,5 @@
 $variable-columns: false;
-@import "~bulma/bulma";
+@import '~bulma/bulma';
 
 @import url('//fonts.googleapis.com/css?family=Pacifico');
 @import url('//fonts.googleapis.com/css?family=Poppins');
@@ -51,23 +51,26 @@ header {
     }
     .rrss {
       align-self: flex-end;
+    }
+  }
+}
+
+.rrss {
+  @media screen and (max-width: 1000px) {
+    padding: 30px 0;
+    margin: 0 auto;
+  }
+  .link {
+    text-decoration: none;
+    color: inherit;
+    margin: 10px;
+    @media screen and (max-width: 1000px) {
+      margin: 0 50px;
+    }
+    .icon {
+      font-size: 2em;
       @media screen and (max-width: 1000px) {
-        padding: 30px 0;
-        margin: 0 auto;
-      }
-      .link {
-        text-decoration: none;
-        color: inherit;
-        margin: 10px;
-        @media screen and (max-width: 1000px) {
-          margin: 0 50px;
-        }
-        .icon {
-          font-size: 2em;
-          @media screen and (max-width: 1000px) {
-            font-size: 3em;
-          }
-        }
+        font-size: 3em;
       }
     }
   }
@@ -98,4 +101,16 @@ header {
 .post {
   max-width: 800px;
   margin: 50px auto 0px auto;
+  text-align: justify;
+  font-family: $description;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 40px;
+  p {
+    padding: 10px 0;
+  }
 }

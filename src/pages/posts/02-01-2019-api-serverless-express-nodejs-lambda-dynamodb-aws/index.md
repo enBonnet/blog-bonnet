@@ -3,7 +3,7 @@ path: '/api-serverless-aws-express-dynamodb'
 title: 'Construir API Node.js Serverless con AWS Lambda y DyanmoDB'
 description: 'Una forma sencilla de construir una API Node.js utilizando el framework de Serverless y Express'
 date: 2019-01-02
-published: false
+published: true
 ---
 
 Una de las ultimas tecnologías que se ha introducido a nuestra cartera de posibilidades es Serverless, en mi opinión una de las mas convenientes, con un muy buen balance de costo y beneficio. Utilizando este framework puedes reducir mucho el tiempo de despliegue de una aplicación y dedicarle más tiempo a la programación de funciones que aporten valor.
@@ -270,7 +270,7 @@ app.get('/todos/:todoId', (req, res) => {
 })
 ```
 
-Una ves agregado este endpoint puedes probarlo con el id de alguna nota creado con anterioridad (http://localhost:3000/todos/5c30e169-26e3-44de-9564-d23a403ddf1b), la respuesta debe de ser solo la nota a la que corresponde el ID
+Una ves agregado este endpoint puedes probarlo con el id de alguna nota creado con anterioridad (`http://localhost:3000/todos/5c30e169-26e3-44de-9564-d23a403ddf1b`), la respuesta debe de ser solo la nota a la que corresponde el ID
 
 ```bash
 {"todoId":"5c30e169-26e3-44de-9564-d23a403ddf1b","title":"Finish bug tickets","done":false}
@@ -388,4 +388,4 @@ Pueden ver el código relacionado a este arcticulo como guía en [GitHub](https:
 
 Este articulo fue publicado originalmente por [Matthew Brown](https://keyholesoftware.com/author/mbrown/) en [keyholesoftware.com](https://keyholesoftware.com/2018/11/05/building-a-node-js-service-with-aws-lambda-dynamodb-and-serverless-framework/).
 
-Me tomé la libertad de traducirlo y compartirlo, agregando algunos comentarios según mi experiencia con la finalidad de hacer más accesibles este material.
+Me tomé la libertad de traducirlo y compartirlo, agregando algunos comentarios según mi experiencia con la finalidad de compartir conocimientos.
