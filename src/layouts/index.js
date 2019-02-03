@@ -8,7 +8,7 @@ import Footer from '../components/footer'
 import './style.scss'
 
 const isIndex = () => {
-  if (window) {
+  if (window !== undefined) {
     let path = window.location.href.split('/')
     if (path[3] !== '') {
       return true
