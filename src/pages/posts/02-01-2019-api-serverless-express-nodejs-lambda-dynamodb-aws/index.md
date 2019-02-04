@@ -58,7 +58,6 @@ Como si esto fuera poco también cuenta con una comunidad activa y buena documen
 
 Algunos de los problemas que puedes tener durante el desarrollo de este articulo:
 
-- Falta del JAVA JVM en tu computador.
 - La version del Serverless Framework o algún plugin.
 - Tener las credenciales de Amazon AWS correctamente configuradas. [_¿Como lo haces?_](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
 
@@ -198,6 +197,27 @@ sls offline start --migrate
 ```
 
 Luego de que termine de iniciar la aplicación podrás acceder a la ruta http://localhost:3000/todos y deberías de tener como respuesta un objeto con un array de "notas" vació: `{"todos":[]}`.
+
+---
+
+En caso de ver un error similar a este:
+
+```bash
+Error: spawn java ENOENT
+at exports._errnoException (util.js:1022:11)
+at Process.ChildProcess._handle.onexit (internal/child_process.js:193:32)
+at onErrorNT (internal/child_process.js:359:16)
+at _combinedTickCallback (internal/process/next_tick.js:74:11)
+at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+```
+
+Debes ejecutar el siguiente comando:
+
+```bash
+sls dynamodb install
+```
+
+---
 
 Para agregar algunas notas necesitamos agregar un endpoint que lo permita, agrega este bloque de código a tu archivo `index.js` justo encima del `module.exports`:
 
@@ -380,6 +400,7 @@ Ahora puedes probar los mismos comandos `CURD` con este nuevo endpoint que gener
 
 - Puedes usar este comando para ver algunos logs `serverless logs -f todo-app -t`
 - Para borrar todos los servicios que levanto esta aplicación al desplegarse en AWS `serverless remove`. _**Cuidado** no solicita confirmación_.
+- Agregar a la sección de `scripts` en el archivo `package.json` la linea `"develop": "sls offline start --migrate"`.
 
 Pueden ver el código relacionado a este articulo como guía en [GitHub](https://github.com/enBonnet/api-express-serverless).
 
