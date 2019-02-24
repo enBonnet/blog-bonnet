@@ -1,12 +1,12 @@
 ---
 path: '/iniciar-react-con-magia-parcel'
-title: 'Iniciar React con magía de Parcel'
+title: 'Iniciar React con magia de Parcel'
 description: 'La forma más senscilla de levantar una app de React'
 date: 2019-02-23
-published: false
+published: true
 ---
 
-Iniciar un nuevo proyecto, no es algo que hagamos todos los días, pero siempre tiene una emoción especial. Siempre hay algo nuevo que queremos probar en cada `init`. Una de las barreras para comenzar a trabajar con React puede ser la configuración que requiere `webpack` para eso se creó el famoso módulo que nos facilita la vida `create-react-app` que en su versión 2 vino con muchas mejoras muy interesante, gracias a la magía de los `react-scripts` podemos tener `webpack`, `babel` y todo lo que necesita React funcionando en un par de minutos.
+Iniciar un nuevo proyecto, no es algo que hagamos todos los días, pero siempre tiene una emoción especial. Siempre hay algo nuevo que queremos probar en cada `init`. Una de las barreras para comenzar a trabajar con React puede ser la configuración que requiere `webpack` para eso se creó el famoso módulo que nos facilita la vida `create-react-app` que en su versión 2 vino con muchas mejoras muy interesante, gracias a la magia de los `react-scripts` podemos tener `webpack`, `babel` y todo lo que necesita React funcionando en un par de minutos.
 
 Pero en este universo de los `bundler` o empaquetadores tenemos un aliado conocido como Parcel que nos facilita muchas configuraciones de una forma muy ligera y casi mágica, para comenzar un proyecto de React con Parecel, solo necesitas:
 
